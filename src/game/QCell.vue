@@ -2,7 +2,7 @@
 	<g :style="positionStyle" @click="handleCellClick">
 		<rect :width="tileSize" :height="tileSize" :class="rectBackgroundClass" />
 		<component
-			:is="cell.element.name"
+			:is="cellType"
 			:cell="cell"
 			:class="cell.element.name"
 			:cell-size="tileSize"
@@ -196,6 +196,14 @@ export default class QCell extends Mixins(getPosition) {
 	 */
 	get shouldTileChangeColor() {
 		return this.isMoving && this.cell.element.name === 'Void';
+	}
+
+	get cellType() {
+		const { name } = this.cell.element;
+		if (name === 'PolarizerH' || name === 'PolarizerV') {
+			return 'Polarizer';
+		}
+		return name;
 	}
 
 	/**

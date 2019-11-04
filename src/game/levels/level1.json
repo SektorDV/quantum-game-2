@@ -54,6 +54,14 @@
         "frozen": false,
         "active": false,
         "energized": false
+      },
+      {
+        "coord": { "y": 6, "x": 7 },
+        "element": "PolarizerH",
+        "rotation": 225,
+        "frozen": false,
+        "active": false,
+        "energized": false
       }
     ]
   },

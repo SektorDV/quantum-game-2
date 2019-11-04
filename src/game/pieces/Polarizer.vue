@@ -16,14 +16,14 @@
 		c0,0.6,0,1.2,0.1,1.8C10.1,19,20,11.9,32,11.9z"
 			/>
 		</g>
-		<g>
+		<g @click.stop="handleInnerClick">
 			<defs>
 				<path
 					id="SVGID_1_"
 					d="M55,28c-1.2,9-11.1,16-23,16S10.1,37,9,28c1.2-9,11.1-16,23-16S53.8,19,55,28z"
 				/>
 			</defs>
-			<g :transform="`rotate(${rotation} 32 32)`">
+			<g :transform="`rotate(${polarizationDegrees} 32 32)`">
 				<rect x="14.5" y="-7" class="st2" width="3" height="69" />
 				<rect x="20.5" y="-7" class="st2" width="3" height="69" />
 				<rect x="8.5" y="-7" class="st2" width="3" height="69" />
@@ -33,7 +33,7 @@
 				<rect x="44.5" y="-7" class="st2" width="3" height="69" />
 				<rect x="50.5" y="-7" class="st2" width="3" height="69" />
 			</g>
-			<clipPath id="SVGID_2_" :transform="`rotate(-${rotation} 32 32)`">
+			<clipPath id="SVGID_2_" :transform="`rotate(-${polarizationDegrees} 32 32)`">
 				<use xlink:href="#SVGID_1_" style="overflow:visible;" />
 			</clipPath>
 		</g>
@@ -45,7 +45,21 @@ import { Component } from 'vue-property-decorator';
 import Piece from './Piece';
 
 @Component
-export default class Polarizer extends Piece {}
+export default class Polarizer extends Piece {
+	polarization = 'Vertical'
+
+	handleInnerClick() {
+		if (this.polarization = 'Vertical') {
+			this.polarization = 'Horizontal';
+		} else {
+			this.polarization = 'Vertical;'
+		}
+	}
+
+	get polarizationDegrees() {
+		return this.polarization === 'Vertical' ? 0 : 90;
+	}
+}
 </script>
 
 <style lang="scss" scoped>
